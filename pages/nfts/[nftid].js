@@ -1,10 +1,11 @@
-import Header from ' ../ ../component/Header'
+import      Header from ' ../ ../component/Header'
 import { useEffect, useMemo, useState } from 'react' 
 import { useWeb3 } from '@3rdweb/hooks' 
 import { ThirdwebSDK } from '@3rdweb/sdk'
 import { useRouter } from 'next/router'
 import { text } from 'stream/consumers'
 import { Container } from 'postcss'
+import NFTimage from '../../components/nft/NFTimage'
 
 const style = {
     wrapper: 'flex flex-col items-center container-lg text-[#e5e8eb]',
@@ -68,11 +69,12 @@ setListings(await marketPlaceModule.getAllListings())
 return (
 <div>
     <Header />
-    <NFTImage />
+    <NFTimage />
 
     </div>
 )
 }
+
 
 export default Nft
 
