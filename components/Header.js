@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import stoneytigerlogo from '../assets/tiger1.png'
+import opensealogo from '../assets/opensealogo.png'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { CgProfile } from 'react-icons/cg'
 import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
@@ -23,8 +23,8 @@ const Header = () => {
     <div className={style.wrapper}>
       <Link href="/">
         <div className={style.logoContainer}>
-          <Image src={stoneytigerlogo} height={40} width={40} />
-          <div className={style.logoText}>StoneyTigersClub</div>
+          <Image src={opensealogo} height={40} width={40} />
+          <div className={style.logoText}>OpenSea</div>
         </div>
       </Link>
       <div className={style.searchBar}>
