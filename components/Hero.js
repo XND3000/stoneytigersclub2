@@ -24,10 +24,9 @@ const Hero = () => {
                  <div className={style.contentWrapper}>
                      <div className={style.copyContainer}>
                          <div className={style.title}>
-                             Join The Discord, Collect, and sell extraordinary NFTs
-                         </div>
+Discover, collect and sell  extraordinary Nfts                         </div>
                          <div className={style.description}>
-                              All across the world people love and cherish the tiger. They have been worshipped and revered throughout history, as indigenous cultures have paid tribute to these astonishing creatures.
+                             Opensea is the worlds first and largest NFT marketplace
                          </div>
                          <div className={style.ctacContainer}>
                              < button className={style.accentedButton}>Explore</button>
