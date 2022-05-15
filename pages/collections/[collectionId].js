@@ -48,7 +48,6 @@ const Collection = () => {
     const sdk = new ThirdwebSDK(
       provider.getSigner(),
         'https://eth-rinkeby.alchemyapi.io/v2/Nhj3aLHM15v5ZCWbu3nNwjRPD4I0PM2e'
-
         )
         return sdk.getNFTModule(collectionId)
       }, [provider])
@@ -70,156 +69,156 @@ const Collection = () => {
           provider.getSigner(),
         'https://eth-rinkeby.alchemyapi.io/v2/Nhj3aLHM15v5ZCWbu3nNwjRPD4I0PM2e'
     )
-        return sdk.getMarketplaceModule(
+    return sdk.getMarketplaceModule(
         '0x767936d65e94E3700A5AacB17302D6906F81647f'
         )
-    }, [provider])
-  
-    // get all listings in the collection
-    useEffect(() => {
-      if (!marketPlaceModule) return
-      ;(async () => {
-        setListings(await marketPlaceModule.getAllListings())
-      })()
-    }, [marketPlaceModule])
-  
-    const fetchCollectionData = async (sanityClient = client) => {
-      const query = `*[_type == "marketItems" && contractAddress == "${collectionId}" ] {
-        "imageUrl": profileImage.asset->url,
-        "bannerImageUrl": bannerImage.asset->url,
-        volumeTraded,
-        createdBy,
-        contractAddress,
-        "creator": createdBy->userName,
-        title, floorPrice,
-        "allOwners": owners[]->,
-        description
-      }`
-  
-      const collectionData = await sanityClient.fetch(query)
-  
-      console.log(collectionData, '🔥')
-  
-      // the query returns 1 object inside of an array
-      await setCollection(collectionData[0])
-    }
-  
-    useEffect(() => {
-      fetchCollectionData()
-    }, [collectionId])
-  
-    console.log(router.query)
-    console.log(router.query.collectionId)
-    return (
-      <div className="overflow-hidden">
-        <Header />
-        <div className={style.bannerImageContainer}>
-          <img
-            className={style.bannerImage}
-            src={
-              collection?.bannerImageUrl
-                ? collection.bannerImageUrl
-                : 'https://via.placeholder.com/200'
-            }
-            alt="banner"
-          />
-        </div>
-        <div className={style.infoContainer}>
-          <div className={style.midRow}>
+      }, [provider])
+    
+      // get all listings in the collection
+      useEffect(() => {
+        if (!marketPlaceModule) return
+        ;(async () => {
+          setListings(await marketPlaceModule.getAllListings())
+        })()
+      }, [marketPlaceModule])
+    
+      const fetchCollectionData = async (sanityClient = client) => {
+        const query = `*[_type == "marketItems" && contractAddress == "${collectionId}" ] {
+          "imageUrl": profileImage.asset->url,
+          "bannerImageUrl": bannerImage.asset->url,
+          volumeTraded,
+          createdBy,
+          contractAddress,
+          "creator": createdBy->userName,
+          title, floorPrice,
+          "allOwners": owners[]->,
+          description
+        }`
+    
+        const collectionData = await sanityClient.fetch(query)
+    
+        console.log(collectionData, '🔥')
+    
+        // the query returns 1 object inside of an array
+        await setCollection(collectionData[0])
+      }
+    
+      useEffect(() => {
+        fetchCollectionData()
+      }, [collectionId])
+    
+      console.log(router.query)
+      console.log(router.query.collectionId)
+      return (
+        <div className="overflow-hidden">
+          <Header />
+          <div className={style.bannerImageContainer}>
             <img
-              className={style.profileImg}
+              className={style.bannerImage}
               src={
-                collection?.imageUrl
-                  ? collection.imageUrl
+                collection?.bannerImageUrl
+                  ? collection.bannerImageUrl
                   : 'https://via.placeholder.com/200'
               }
-              alt="profile image"
+              alt="banner"
             />
           </div>
-          <div className={style.endRow}>
-            <div className={style.socialIconsContainer}>
-              <div className={style.socialIconsWrapper}>
-                <div className={style.socialIconsContent}>
-                  <div className={style.socialIcon}>
-                    <CgWebsite />
-                  </div>
-                  <div className={style.divider} />
-                  <div className={style.socialIcon}>
-                    <AiOutlineInstagram />
-                  </div>
-                  <div className={style.divider} />
-                  <div className={style.socialIcon}>
-                    <AiOutlineTwitter />
-                  </div>
-                  <div className={style.divider} />
-                  <div className={style.socialIcon}>
-                    <HiDotsVertical />
-                  </div>
-                </div>
-              </div>
+          <div className={style.infoContainer}>
+            <div className={style.midRow}>
+              <img
+                className={style.profileImg}
+                src={
+                  collection?.imageUrl
+                    ? collection.imageUrl
+                    : 'https://via.placeholder.com/200'
+                }
+                alt="profile image"
+              />
             </div>
-          </div>
-          <div className={style.midRow}>
-            <div className={style.title}>{collection?.title}</div>
-          </div>
-          <div className={style.midRow}>
-            <div className={style.createdBy}>
-              Created by{' '}
-              <span className="text-[#2081e2]">{collection?.creator}</span>
-            </div>
-          </div>
-          <div className={style.midRow}>
-            <div className={style.statsContainer}>
-              <div className={style.collectionStat}>
-                <div className={style.statValue}>{nfts.length}</div>
-                <div className={style.statName}>items</div>
-              </div>
-              <div className={style.collectionStat}>
-                <div className={style.statValue}>
-                  {collection?.allOwners ? collection.allOwners.length : ''}
-                </div>
-                <div className={style.statName}>owners</div>
-              </div>
-              <div className={style.collectionStat}>
-                <div className={style.statValue}>
-                  <img
-                        src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
-                        alt="eth"
-                        className={style.ethLogo}
-                        />
-                        {collection?.floorPrice}
-                        </div>
-                        <div className={style.statName}>floorPrice</div>
+            <div className={style.endRow}>
+              <div className={style.socialIconsContainer}>
+                <div className={style.socialIconsWrapper}>
+                  <div className={style.socialIconsContent}>
+                    <div className={style.socialIcon}>
+                      <CgWebsite />
                     </div>
-                    <div className={style.collectionStat}>
-                        <div className={style.statValue}>
-                        <img
-                        src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
-                        alt="eth"
-                        className={style.ethLogo}
-                      />
-                      {collection?.volumeTraded}.5K
+                    <div className={style.divider} />
+                    <div className={style.socialIcon}>
+                      <AiOutlineInstagram />
                     </div>
-                    <div className={style.statName}>volume traded</div>
+                    <div className={style.divider} />
+                    <div className={style.socialIcon}>
+                      <AiOutlineTwitter />
+                    </div>
+                    <div className={style.divider} />
+                    <div className={style.socialIcon}>
+                      <HiDotsVertical />
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className={style.midRow}>
-                <div className={style.description}>{collection?.description}</div>
+            </div>
+            <div className={style.midRow}>
+              <div className={style.title}>{collection?.title}</div>
+            </div>
+            <div className={style.midRow}>
+              <div className={style.createdBy}>
+                Created by{' '}
+                <span className="text-[#2081e2]">{collection?.creator}</span>
               </div>
             </div>
-            <div className="flex flex-wrap ">
-              {nfts.map((nftItem, id) => (
-                <NFTCard
-                  key={id}
-                  nftItem={nftItem}
-                  title={collection?.title}
-                  listings={listings}
-                />
-              ))}
+            <div className={style.midRow}>
+              <div className={style.statsContainer}>
+                <div className={style.collectionStat}>
+                  <div className={style.statValue}>{nfts.length}</div>
+                  <div className={style.statName}>items</div>
+                </div>
+                <div className={style.collectionStat}>
+                  <div className={style.statValue}>
+                    {collection?.allOwners ? collection.allOwners.length : ''}
+                  </div>
+                  <div className={style.statName}>owners</div>
+                </div>
+                <div className={style.collectionStat}>
+                  <div className={style.statValue}>
+                    <img
+                      src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
+                      alt="eth"
+                      className={style.ethLogo}
+                    />
+                    {collection?.floorPrice}
+                  </div>
+                  <div className={style.statName}>floor price</div>
+                </div>
+                <div className={style.collectionStat}>
+                  <div className={style.statValue}>
+                    <img
+                      src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
+                      alt="eth"
+                      className={style.ethLogo}
+                    />
+                    {collection?.volumeTraded}.5K
+                  </div>
+                  <div className={style.statName}>volume traded</div>
+                </div>
+              </div>
+            </div>
+            <div className={style.midRow}>
+              <div className={style.description}>{collection?.description}</div>
             </div>
           </div>
-        )
-      }
-      
-      export default Collection
+          <div className="flex flex-wrap ">
+            {nfts.map((nftItem, id) => (
+              <NFTCard
+                key={id}
+                nftItem={nftItem}
+                title={collection?.title}
+                listings={listings}
+              />
+            ))}
+          </div>
+        </div>
+      )
+    }
+    
+    export default Collection

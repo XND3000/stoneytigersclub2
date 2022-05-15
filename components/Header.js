@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import opensealogo from '../assets/opensealogo.png'
+import tiger1 from '../assets/tiger1.png'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { CgProfile } from 'react-icons/cg'
 import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
@@ -24,8 +24,8 @@ const Header = () => {
     <div className={style.wrapper}>
       <Link href="/">
         <div className={style.logoContainer}>
-          <Image src={opensealogo} height={40} width={40} />
-          <div className={style.logoText}>OpenSea</div>
+          <Image src={tiger1} height={40} width={40} />
+          <div className={style.logoText}>Stoney Tigers Club</div>
         </div>
       </Link>
       <div className={style.searchBar}>

@@ -15,13 +15,13 @@ const NFTImage = ({ selectedNft }) => {
           <IoMdSnow />
           <div className={style.likesCounter}>
             <AiOutlineHeart />
-            2.3K
+            3.3K
           </div>
         </div>
       </div>
       <div>
-        {console.log(selectedNft, '🎆')}
-        <img src={selectedNft?.image} />
+
+      <img src={selectedNft?.image} />
       </div>
     </div>
   )
