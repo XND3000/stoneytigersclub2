@@ -8,7 +8,7 @@ import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
 
 
 const style = { 
-  wrapper: `bg-[#04111d] w-screen px-[1.2rem] py-[0.8rem] flex `,
+  wrapper: `bg-[#5D7868] w-screen px-[1.2rem] py-[0.8rem] flex `,
   logoContainer: `flex items-center cursor-pointer`,
   logoText: ` ml-[0.8rem] text-white font-semibold text-2xl`,
   searchBar: `flex flex-1 mx-[0.8rem] w-max-[520px] items-center bg-[#1D3140] rounded-[0.8rem] hover:bg-[#1D3140]`,
