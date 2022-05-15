@@ -5,7 +5,7 @@ import { ThirdwebSDK } from '@3rdweb/sdk'
 import { useRouter } from 'next/router'
 import NFTImage from '../../components/nft/NFTImage'
 import GeneralDetails from '../../components/nft/GeneralDetails'
-//import ItemActivity from '../../components/nft/ItemActivity'
+import ItemActivity from '../../components/nft/ItemActivity'
 //import Purchase from '../../components/nft/Purchase'
 
 const style = {
@@ -49,38 +49,41 @@ const marketPlaceModule = useMemo(() => {
   if (!provider) return
 
   const sdk = new ThirdwebSDK(
+    provider.getSigner(),
     'https://eth-rinkeby.alchemyapi.io/v2/Nhj3aLHM15v5ZCWbu3nNwjRPD4I0PM2e'
 )
 return sdk.getMarketplaceModule(
     '0x767936d65e94E3700A5AacB17302D6906F81647f'
     )
-}, [provider])
+    
+  }, [provider])
 
-useEffect(() => {
-  if (!marketPlaceModule) return
-  ;(async () => {
-    setListings(await marketPlaceModule.getAllListings())
-  })()
-}, [marketPlaceModule])
+  useEffect(() => {
+    if (!marketPlaceModule) return
+    ;(async () => {
+      setListings(await marketPlaceModule.getAllListings())
+    })()
+  }, [marketPlaceModule])
 
-return (
-  <div>
-    <Header />
-    <div className={style.wrapper}>
-      <div className={style.container}>
-        <div className={style.topContent}>
-          <div className={style.nftImgContainer}>
-            <NFTImage selectedNft={selectedNft} />
-          </div>
-          <div className={style.detailsContainer}>
+  return (
+    <div>
+      <Header />
+      <div className={style.wrapper}>
+        <div className={style.container}>
+          <div className={style.topContent}>
+            <div className={style.nftImgContainer}>
+              <NFTImage selectedNft={selectedNft} />
+            </div>
+            <div className={style.detailsContainer}>
               <GeneralDetails selectedNft={selectedNft} />
-         </div>
-         </div>
+              
+            </div>
+          </div>
+          <ItemActivity/>
+        </div>
+      </div>
     </div>
-    </div>
-  </div>
-)
+  )
 }
 
 export default Nft
-
