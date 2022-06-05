@@ -154,7 +154,10 @@ const Collection = () => {
                     <div className={style.socialIcon}>
                       <HiDotsVertical />
                     </div>
-                  </div>
+                  </div
+                  
+                  
+                  >
                 </div>
               </div>
             </div>

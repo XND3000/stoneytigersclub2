@@ -1,5 +1,7 @@
 import React from 'react'
 import stoneybackground from '../assets/stoneybackground.png'
+
+
 const style = {
     wrapper: `relative`,
     container: `before:content-[''] before:bg-red-500 before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:bg-[url('https://pbs.twimg.com/media/FLkhRmxXEAoHT5V.jpg')] before:bg-cover before:bg-center before:opacity-30 before:blur`,
@@ -24,7 +26,7 @@ const Hero = () => {
                  <div className={style.contentWrapper}>
                      <div className={style.copyContainer}>
                          <div className={style.title}>
-Discover, collect and sell  extraordinary Nfts                         </div>
+                         Welcome To The Stoney Tigers Club!                        </div>
                          <div className={style.description}>
                              Opensea is the worlds first and largest NFT marketplace
                          </div>
@@ -48,7 +50,7 @@ Discover, collect and sell  extraordinary Nfts                         </div>
                                  <div className={style.name}>Aidan Waldron</div>
                                  <a
                                     className="text-[#1868b7]"
-                                    href="https://opensea.io/collection/stoneytigersclub-nft"
+                                    href="https://opensea.io/collection/stoneytigernft"
                                     ></a>
                              </div>
                          </div>
@@ -56,6 +58,8 @@ Discover, collect and sell  extraordinary Nfts                         </div>
             </div>
         </div>
     </div>
+
+  
     )
 }
 
