@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import { HiTag } from 'react-icons/hi'
 import { IoMdWallet } from 'react-icons/io'
 import toast, { Toaster } from 'react-hot-toast'
@@ -17,7 +18,7 @@ const MakeOffer = ({ isListed, selectedNft, listings, marketPlaceModule }) => {
     if (!listings || isListed === 'false') return
     ;(async () => {
       setSelectedMarketNft(
-        listings.find((marketNft) => marketNft.asset?.id === selectedNft.id),
+        listings.find((marketNft) => marketNft.asset?.id === selectedNft.id)
       )
     })()
   }, [selectedNft, listings, isListed])
